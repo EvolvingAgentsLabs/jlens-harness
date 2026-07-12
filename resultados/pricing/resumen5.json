@@ -1,0 +1,9 @@
+[
+  {
+    "version": "v5_tool_calc",
+    "correcta": false,
+    "truncada": true,
+    "pide_datos": false,
+    "dominante_salida": "computo"
+  }
+]

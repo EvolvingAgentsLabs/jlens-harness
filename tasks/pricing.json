@@ -1,0 +1,40 @@
+{
+  "nombre": "pricing",
+  "descripcion": "Optimización de precio del artículo: costo unitario $20; a $50 se venden 100 unidades/mes; cada rebaja de $5 suma 20 unidades. P=50-5x, Q=100+20x, G=(P-20)Q. Correcto: P*=$47.50, G*=$3025/mes.",
+  "esperado": {"precio": 47.5, "ganancia": 3025},
+  "tarea": "¿Cuál es el precio óptimo para mi nuevo producto para maximizar la ganancia mensual? Dame el precio exacto y la ganancia esperada.",
+  "datos_reales": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+  "versiones": {
+    "v1_deficiente": {
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario.",
+      "data": "",
+      "output_budget": 160
+    },
+    "v2_con_datos": {
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario.",
+      "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+      "output_budget": 160
+    },
+    "v3_verificacion_verbosa": {
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario. Explicá tu razonamiento paso a paso con todo detalle, mostrando cada operación aritmética, y verificá meticulosamente cada paso del cálculo antes de dar la respuesta final.",
+      "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+      "output_budget": 160
+    },
+    "v3b_verificacion_concisa": {
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario. Planteá G(x) con x = cantidad de rebajas de $5, expandí G término a término (ojo con el signo del término lineal), hallá el vértice x*, y dá el precio óptimo y la ganancia. Muy breve: máximo 5 líneas.",
+      "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+      "output_budget": 160
+    },
+    "v4_expansion_explicita": {
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario. Con x = cantidad de rebajas de $5: margen = 30 − 5x, cantidad = 100 + 20x, G(x) = (30 − 5x)(100 + 20x). Expandí mostrando los cuatro productos por separado: 30·100, 30·20x, −5x·100, −5x·20x. Sumá los dos términos lineales explícitamente (ojo con el signo) antes de seguir. Hallá x* = −b/(2a), el precio óptimo 50 − 5x* y la ganancia G(x*). Muy breve: máximo 7 líneas.",
+      "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+      "output_budget": 200
+    },
+    "v5_tool_calc": {
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario. Con x = cantidad de rebajas de $5: G(x) = (30 − 5x)(100 + 20x). No hagas ninguna operación aritmética mentalmente: para cada cálculo usá la herramienta calc escribiendo una línea que empiece con TOOL:. Primero pedí la expansión de G, después el vértice x* = −b/(2a), después el precio 50 − 5x* y la ganancia G(x*). Cuando tengas los resultados de la herramienta, dá el precio óptimo y la ganancia en una línea final.",
+      "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+      "tools": [{"name": "calc", "description": "evalúa una expresión aritmética exacta y devuelve el número; ejemplo de uso: TOOL: calc((30 - 5*1.5)*(100 + 20*1.5))"}],
+      "output_budget": 220
+    }
+  }
+}

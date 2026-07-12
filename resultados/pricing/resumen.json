@@ -1,0 +1,30 @@
+[
+  {
+    "version": "v1_deficiente",
+    "correcta": false,
+    "truncada": true,
+    "pide_datos": true,
+    "dominante_salida": "computo"
+  },
+  {
+    "version": "v2_con_datos",
+    "correcta": false,
+    "truncada": true,
+    "pide_datos": true,
+    "dominante_salida": "computo"
+  },
+  {
+    "version": "v3_verificacion_verbosa",
+    "correcta": false,
+    "truncada": true,
+    "pide_datos": true,
+    "dominante_salida": "missing_info"
+  },
+  {
+    "version": "v3b_verificacion_concisa",
+    "correcta": false,
+    "truncada": true,
+    "pide_datos": true,
+    "dominante_salida": "computo"
+  }
+]

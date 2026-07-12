@@ -1,0 +1,9 @@
+[
+  {
+    "version": "v4_expansion_explicita",
+    "correcta": false,
+    "truncada": false,
+    "pide_datos": false,
+    "dominante_salida": "computo"
+  }
+]
