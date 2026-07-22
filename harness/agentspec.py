@@ -66,7 +66,7 @@ class AgentSpec:
 
 def componer_prompt(spec: AgentSpec, tarea: str, arranque: str = "") -> str:
     """Ensambla la entrada del sujeto. `arranque` es la señal de continuación
-    en primera persona para modelos base (ver experimento-interno)."""
+    en primera persona para modelos base."""
     partes = [spec.instructions.strip()]
     if spec.context.strip():
         partes.append(f"Contexto:\n{spec.context.strip()}")

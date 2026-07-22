@@ -8,8 +8,8 @@ sub-agentes, y dejar que un modelo de frontera (Claude Code) diagnostique y
 parchee el harness del agente en un loop de mejora.
 
 Basado en el experimento "Debugging prompts by looking inside the model"
-(pricing v1→v3b sobre el demo de Neuronpedia) y en la réplica local de
-`../experimento-interno` (jlens + modelos abiertos en esta máquina).
+(pricing v1→v3b sobre el demo de Neuronpedia) y en una réplica local
+(jlens + modelos abiertos en esta máquina).
 
 ## La idea
 
@@ -70,7 +70,7 @@ salida (caza el error de ejecución)** — los dos, nunca uno solo.
   completa (entrada + pizarrón + salida + verificación) y sigue
   `analyst/ANALYST.md`.
 - **Intervenciones causales**: STEER / ABLATE / SWAP sobre el residual
-  stream (generalización de lo implementado en `experimento-interno`) para probar
+  stream (generalización de un experimento interno de J-space) para probar
   si un concepto es carga-portante antes de tocar el prompt.
 
 ## Layout

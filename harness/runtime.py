@@ -42,6 +42,19 @@ MODELS = {
         "decoding": {"do_sample": False, "repetition_penalty": 1.3,
                      "no_repeat_ngram_size": 4},
     },
+    "gemma4e4b": {
+        # Réplica cross-modelo de sleep-harness. Lens ajustado por Neuronpedia
+        # sobre google/gemma-4-E4B (wikitext, n=663, bf16) — ver config.yaml
+        # del repo del lens. Modelo no gated.
+        "hf": "google/gemma-4-E4B",
+        "lens_file": "gemma-4-e4b/jlens/Salesforce-wikitext/gemma-4-E4B_jacobian_lens.pt",
+        "lens_revision": None,
+        "arranque": "",
+        # Punto de partida conservador (mismo perfil que gemma-3 base);
+        # el smoke de compatibilidad calibra si hace falta ajustar.
+        "decoding": {"do_sample": False, "repetition_penalty": 1.3,
+                     "no_repeat_ngram_size": 4},
+    },
 }
 
 STOPWORDS = set(
@@ -172,7 +185,8 @@ class Runtime:
     @torch.no_grad()
     def step(self, prompt: str, *, max_new_tokens: int = 200,
              rastrear: list[str] | None = None,
-             leer_salida: bool = True) -> StepResult:
+             leer_salida: bool = True,
+             max_posiciones_salida: int = 10) -> StepResult:
         """Genera y lee el pizarrón sobre el prompt y sobre lo generado."""
         t0 = time.time()
         ids = self.tokenizer(prompt, return_tensors="pt").to(self.hf_model.device)
@@ -192,7 +206,8 @@ class Runtime:
         if leer_salida and salida.strip():
             completo = self.tokenizer.decode(out[0], skip_special_tokens=True)
             ws_salida = self.leer_pizarron(
-                completo, desde=n_prompt, hasta=None, rastrear=rastrear
+                completo, desde=n_prompt, hasta=None, rastrear=rastrear,
+                max_posiciones=max_posiciones_salida,
             )
         return StepResult(
             prompt=prompt, salida=salida, truncada=truncada,

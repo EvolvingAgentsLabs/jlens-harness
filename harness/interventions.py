@@ -1,6 +1,6 @@
 """Intervenciones causales sobre el residual stream: STEER / ABLATE / SWAP.
 
-Generalización de lo implementado en ../experimento-interno: la dirección de un
+Generalización de un experimento interno de J-space: la dirección de un
 concepto (un token único del vocabulario) en la capa l se obtiene
 transportando su fila del unembedding con J_l^T. Réplica estructural de las
 intervenciones del demo de Neuronpedia (cuyo código exacto no es público).
